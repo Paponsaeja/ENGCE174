@@ -1,0 +1,390 @@
+ชนิดตัวแปร variable
+- ใน Python ตัวแปรจะเก็บข้อมูลหลายชนิด ซึ่งตัวแปรใน Python ไม่จำเป็นต้องกำหนดชนิดชัดเจน
+	age = 24 => int 
+	name = "ZACK" => string 
+	is_student => True => Boolean 
+	names = [1,2,3,4] => array , list
+---------------------------------------------------------------------------------------
+	() = tuple ลำดับแน่นอน ไม่สามารถเปลี่ยนแปลงค่าได้
+		dimensions = (1920, 1080)
+
+	[] = list ลำดับแน่นอนสามารถเปลี่ยนแปลงค่าได้ โดย ใช้แทน array []
+		fruits = ["apple", "banana", "cherry"] 
+		
+		# ลิสต์เก็บจำนวนเต็ม
+		numbers = [1, 2, 3, 4, 5]
+		
+# เพิ่มค่าในลิสต์
+numbers.append(6)  # เพิ่มท้ายลิสต์
+print(numbers)     # [10, 2, 3, 4, 5, 6]
+
+# แทรกค่าในลิสต์
+numbers.insert(1, 20)  # แทรกค่า 20 ที่ตำแหน่ง 1
+print(numbers)         # [10, 20, 2, 3, 4, 5, 6]
+
+# ลบค่าจากลิสต์
+numbers.remove(20)  # ลบค่า 20
+print(numbers)      # [10, 2, 3, 4, 5, 6]
+
+# ลบสมาชิกท้ายลิสต์
+numbers.pop(0)       # ลบค่าท้ายลิสต์ หากต้องการตัวแรก ให้เพิ่ม index 0 
+print(numbers)      # [10, 2, 3, 4, 5]
+
+
+	{} = dictionary เก็บค่าในรูป {key:value} 
+		student = {"name": "Alice", "age": 20}
+			==> {key_expression: value_expression for item in iterable}
+			Ex. square_dict = {num: num**2 for num in numbers}
+
+			Output => Dictionary of squares: {1: 1, 2: 4, 3: 9 }
+
+				dictionary comprehension การวนลูปforภายในเครื่องหมายปีกกาซึ่งจะทำให้ทั้ง			บรรทัดของโค้ดวนลูป for เองโดยไม่ต้องเขียน for นำข้างหน้าก่อน
+			-> iterable = [1,2,3]
+			-> item = 1 or 2 or 3
+			-> value = สิ่งที่จะทำกับ item เช่นยกกำลัง x**2
+			-> key = ค่าของ item ในตำแหน่งนี้ใน=> ____: 
+
+	{} = set เก็บค่าที่ไม่ซ้ำกันและไม่มีลำดับ เวลา print ออกมาเลขจึงไม่เป็นลำดับนั่นเอง
+		unique_numbers = {1, 2, 3, 3, 2}
+-----------------------------------------------------------------------------------
+Loop 
+สามารถระบุค่าเริ่มต้นและค่าที่จะหยุดได้
+for i in range(5)
+0-4
+
+# วนลูปจาก 3 ถึง 7 (เพิ่มทีละ 1) ไม่รวม 8  # range(start, stop)
+for i in range(3, 8):
+    print(i)
+
+For Loop แบบกำหนด Step (เพิ่มทีละมากกว่า 1)
+# วนลูปจาก 0 ถึง 9 (เพิ่มทีละ 2)		# range(start, stop, step)
+for i in range(0, 10, 2):
+    print(i)      # 0 2 4 6 8
+
+For Loop แบบลดลง (Decrement)
+# วนลูปจาก 10 ถึง 1 (ลดทีละ 1)		# range(start, stop, -step)
+for i in range(10, 0, -1):
+    print(i)      # 10 9 8 7 6 5 4 3 2 1
+
+# วนลูปในลิสต์ list
+fruits = ["apple", "banana", "cherry"]
+for fruit in fruits:
+    print(fruit)
+   
+# apple
+  banana
+  cherry
+
+# วนลูปในดิกชันนารี dictionary
+student = {"name": "Alice", "age": 20, "grade": "A"}
+for key, value in student.items():
+    print(f"{key}: {value}")
+
+# name: Alice
+  age: 20
+  grade: A
+----------------------------------------------------------------------
+function 
+ฟังก์ชันสำหรับการดำเนินการทางคณิตศาสตร์ => abs() - คำนวณค่าสัมบูรณ์, pow() - ยกกำลัง (เทียบเท่ากับ x**y)
+ฟังก์ชันสำหรับการทำงานกับอ็อบเจกต์ => id() - คืนค่า ID ของอ็อบเจกต์
+ ฟังก์ชันสำหรับการจัดการสตริง => str() - แปลงเป็นสตริง
+
+การใช้ continue = คือการข้ามการวนลูปในรอบนั้น และไปรอบถัดไปทันที 
+end ="" เอาไว้สำหรับเวลาวนลูป for ไปหนึ่งรอบแล้ว end จะทำให้ไม่ขึ้นบรรทัดใหม่ เพราะว่า for ใน python มักจะขึ้นบรรทัดใหม่ตลอดที่ทำ 1 รอบเสร็จ
+break = ออกจาลูป
+
+def function_name(parameters):
+    # โค้ดที่ต้องการให้ทำงานเมื่อฟังก์ชันถูกเรียก
+    return value  # คืนค่าที่ได้จากการประมวลผล (สามารถไม่มีก็ได้)
+
+ฟังก์ชันที่ไม่มีพารามิเตอร์
+	def say_hello():
+    		print("Hello, world!")
+
+	# เรียกใช้งานฟังก์ชัน
+	say_hello()  # ผลลัพธ์: Hello, world!
+
+ฟังก์ชันที่มีพารามิเตอร์
+	def greet(name):
+    		print(f"Hello, {name}!")
+
+	# เรียกใช้งานฟังก์ชัน
+	greet("John")  # ผลลัพธ์: Hello, John!
+
+ฟังก์ชันที่มีการคืนค่า (Return Value)
+	def add(a, b):
+    		return a + b
+
+	# เรียกใช้งานฟังก์ชันและรับค่าคืน
+	result = add(5, 3)
+	print(result)  # ผลลัพธ์: 8
+
+ฟังก์ชันที่มีค่าเริ่มต้น (Default Parameters)
+	def greet(name="Guest"):
+   		print(f"Hello, {name}!")
+
+	greet("Alice")  # ผลลัพธ์: Hello, Alice!
+	greet()         # ผลลัพธ์: Hello, Guest!
+
+ฟังก์ชันที่มีการคืนค่า (Return Value)
+	def add(a, b):
+    		return a + b
+
+	# เรียกใช้งานฟังก์ชันและรับค่าคืน
+	result = add(5, 3)
+	print(result)  # ผลลัพธ์: 8
+
+ฟังก์ชันที่มีจำนวนพารามิเตอร์ไม่จำกัด
+ใช้ *args สำหรับพารามิเตอร์หลายค่า โดยไม่จำกัดจำนวน
+	def sum_all(*args):
+    		return sum(args)
+
+	print(sum_all(1, 2, 3))      # ผลลัพธ์: 6
+	print(sum_all(1, 2, 3, 4, 5)) # ผลลัพธ์: 15
+
+ฟังก์ชันที่มีพารามิเตอร์แบบคีย์เวิร์ดไม่จำกัด
+ใช้ **kwargs เพื่อรับพารามิเตอร์แบบคีย์เวิร์ดไม่จำกัดจำนวน
+	def print_info(**kwargs):
+    		for key, value in kwargs.items():
+        		print(f"{key}: {value}")
+
+	# เรียกใช้งานฟังก์ชัน
+	print_info(name="Alice", age=30)  
+		# ผลลัพธ์:
+		# name: Alice
+		# age: 30
+
+ฟังก์ชัน Lambda
+Lambda คือฟังก์ชันแบบไม่มีชื่อ (Anonymous Function) ใช้สำหรับงานที่ต้องการฟังก์ชันขนาดเล็กที่ใช้เพียงครั้งเดียว
+# Lambda สำหรับการบวก
+add = lambda x, y: x + y
+print(add(2, 3))  # ผลลัพธ์: 5
+
+# ใช้ Lambda ในฟังก์ชัน map
+numbers = [1, 2, 3, 4]
+squared = list(map(lambda x: x**2, numbers))
+print(squared)  # ผลลัพธ์: [1, 4, 9, 16]
+
+
+*** การใช้ print() และ  print(f"")  ***
+	name = "Bob"
+	age = 25
+	
+	# ใช้ print() ธรรมดา ต้องใช้เครื่องหมายบวกและแปลงตัวแปรเป็นสตริง
+	print("Name: " + name + ", Age: " + str(age))  # ผลลัพธ์: Name: Bob, Age: 25
+
+	# ใช้ print(f"") ง่ายขึ้น ไม่ต้องแปลงค่าใด ๆ
+	print(f"Name: {name}, Age: {age}")  # ผลลัพธ์: Name: Bob, Age: 25
+-------------------------------------------------------------------------------------------
+class 
+คือ วัตถุ" (Objects) ซึ่งแต่ละวัตถุจะมี คุณสมบัติ (Attributes) และ พฤติกรรม (Methods) ของตัวเอง วัตถุเหล่านี้เป็นการรวมข้อมูลและฟังก์ชันที่เกี่ยวข้องไว้ด้วยกัน
+
+						<-# ประกาศ Class
+class Dog:
+
+    def __init__(self, name, breed): 
+        self.name = name  		# Attribute ที่จะใช้ใน object (คุณสมบัติ)
+        self.breed = breed  		# Attribute ที่จะใช้ใน object (คุณสมบัติ)
+
+    def bark(self):  				# Method (พฤติกรรม)
+        print(f"{self.name} is barking!")
+
+    def eat(self, food ):
+	    self.food = food
+
+    def shit(self, poop):
+        self.poop = poop
+        print(f"{self.name} shit is {self.poop}")
+        
+# สร้าง Object/instance จาก Class
+dog1 = Dog("Buddy", "Golden Retriever")
+dog2 = Dog("Max", "Labrador")
+#=> dog1, dog2 เป็น Object (อินสแตนซ์) ที่สร้างจาก Class Dog
+
+# เรียกใช้ Method
+dog1.bark()  # ผลลัพธ์: Buddy is barking!
+dog2.bark()  # ผลลัพธ์: Max is barking!
+
+#การเรียกใช้งาน attribute นอก constructor method 2 แบบ 
+# 1 print นอก class หรืแสดงผลคำนวณอะไรก็ตามด้านนอก
+dog2.eat("pedigree")
+print(dog2.food)
+
+# 2 แสดงผลด้านใน class และเอาคำตอบมาใช้ด้านนอก 
+dog1.shit("golden")
+
+-------------------------------------------------------------------------------------------
+หลักการ Constructor Method __init__(self)
+
+คือ ที่รวมตัว global variable ขนาดย่อมภายใน class นั่นเอง 
+จะสามารถเรียกใช้งานได้ทุกที่ของ class 
+
+def __init__(self,parameters,value1,value2)
+	self.attrivute1 = value1
+	self.attribute2 = value2 
+
+เวลาใช้งาน object จึงจะใส่ค่าตาม attribute ใน constructor method
+Ex.1 
+def __init__(self, name, breed): 
+        self.name = name  		# Attribute ที่จะใช้ใน object (คุณสมบัติ)
+        self.breed = breed  		# Attribute ที่จะใช้ใน object (คุณสมบัติ)
+
+ 
+dog1 = Dog("Buddy", "Golden Retriever")
+dog2 = Dog("Max", "Labrador")
+- จะเห็นได้ว่าจากการประกาศ object/instance  เรียกใช้งาน class Dog จะใส่ได้เพียง 2 ค่าเท่านั้น เนื่องจาก constructor 
+method ประกาศ attribute ให้ใช้งานแค่ 2 attribute เท่านั้น หาก
+
+------------------------------------------------------------------------------------------
+inheritance การสืบทอด 
+///////////////////////////////////////
+## =>Single Inheritance (การสืบทอดแบบชั้นเดียว)
+
+class Shape:
+    def area(self):
+        pass  # เป็นเมธอดว่าง ๆ ให้คลาสลูกมาเขียนทับ
+
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height  # พื้นที่ของสี่เหลี่ยม = กว้าง * ยาว
+
+class Box(Rectangle):
+    def __init__(self, width, height, depth):
+        super().__init__(width, height)  # ใช้ super() เพื่อเรียก __init__ ของ Rectangle
+        self.depth = depth
+
+    def volume(self):
+        return self.area() * self.depth  # ปริมาตรกล่อง = พื้นที่สี่เหลี่ยม * ความลึก
+
+///////////////////////////////////////////
+## =>Multiple Inheritance (การสืบทอดแบบหลายชั้น)
+
+class Animal:
+    def speak(self):
+        return "Animal speaks"
+
+class Mammal:
+    def feed_milk(self):
+        return "Feeds milk"
+
+class Dog(Animal, Mammal):  # Dog สืบทอดจาก Animal และ Mammal
+    def bark(self):
+        return "Woof!"
+
+dog = Dog()
+print(dog.speak())      # สืบทอดจาก Animal
+print(dog.feed_milk())  # สืบทอดจาก Mammal
+print(dog.bark())       # ใช้เมธอดของ Dog
+
+//////////////////////////////////////////
+## =>Multilevel Inheritance (การสืบทอดแบบหลายระดับ)
+
+class Animal:
+    def speak(self):
+        return "Animal speaks"
+
+class Mammal(Animal):  # Mammal สืบทอดจาก Animal
+    def feed_milk(self):
+        return "Feeds milk"
+
+class Dog(Mammal):  # Dog สืบทอดจาก Mammal
+    def bark(self):
+        return "Woof!"
+
+dog = Dog()
+print(dog.speak())      # สืบทอดจาก Animal
+print(dog.feed_milk())  # สืบทอดจาก Mammal
+print(dog.bark())       # ใช้เมธอดของ Dog
+
+//////////////////////////////////////////
+## การเขียนทับ (Method Overriding)  แก้ได้บางครั้งด้วย super()
+
+class Animal:
+    def speak(self):
+        return "Animal speaks"
+
+class Dog(Animal):
+    def speak(self):
+        return "Woof!"
+
+# การใช้งาน
+dog = Dog()
+print(dog.speak())  # ผลลัพธ์: Woof!
+
+///////////////////////////////////////////
+## (Method Overloading)  ** การใช้ *args ช่วยให้สามารถส่งจำนวนพารามิเตอร์ที่ไม่จำกัดไปยังเมธอดได้
+
+class MathOperations:
+    def add(self, a, b=0, c=0):     #  def add(self, *args):
+        return a + b + c
+
+math_ops = MathOperations()
+print(math_ops.add(2, 3))      # ใช้ 2 พารามิเตอร์ ผลลัพธ์: 5
+print(math_ops.add(2, 3, 4))   # ใช้ 3 พารามิเตอร์ ผลลัพธ์: 9
+print(math_ops.add(2))          # ใช้ 1 พารามิเตอร์ ผลลัพธ์: 2
+
+--------------------------------------------------------------------------------------------------
+หลักการ Polymorphism
+
+class Animal:
+    def speak(self):
+        raise NotImplementedError("Subclasses must implement this method")
+	# ใช้เพื่อบังคับให้คลาสย่อย (subclass) ต้องมีการนิยามเมธอดที่ถูกเรียกใช้ในคลาสหลัก (superclass) โดยป้องกันไม่ให้เรียกเมธอดที่ยังไม่ได้ถูกกำหนดจริงๆ
+
+class Dog(Animal):
+    def speak(self):
+        return "Woof!"
+
+class Cat(Animal):
+    def speak(self):
+        return "Meow!"
+
+def make_animal_speak(animal: Animal):   ## อยู่ตรงนี้
+    print(animal.speak())
+
+# การใช้งาน
+dog = Dog()
+cat = Cat()
+
+make_animal_speak(dog)  # ผลลัพธ์: Woof!
+make_animal_speak(cat)  # ผลลัพธ์: Meow!
+
+////////////////////////////////////////////
+หลักการของ Thread
+Multithreading: การใช้หลายเธรดในโปรแกรมเดียวเพื่อให้สามารถทำงานพร้อมกัน ซึ่งสามารถเพิ่มประสิทธิภาพในการประมวลผล
+Concurrency: ทำให้โปรแกรมสามารถทำงานหลายอย่างพร้อมกัน เช่น การดาวน์โหลดข้อมูลในขณะที่ผู้ใช้สามารถโต้ตอบกับ UI ได้
+Synchronization: เมื่อหลายเธรดเข้าถึงข้อมูลหรือทรัพยากรเดียวกัน ต้องมีการจัดการเพื่อป้องกันปัญหาเช่น การเข้าถึงข้อมูลที่ไม่ถูกต้อง
+
+\import threading
+import time
+
+def print_numbers():
+    for i in range(5):
+        print(i)
+        time.sleep(1)
+
+def print_letters():
+    for letter in 'abcde':
+        print(letter)
+        time.sleep(1)
+
+# สร้างเธรด
+thread1 = threading.Thread(target=print_numbers)
+thread2 = threading.Thread(target=print_letters)
+
+# เริ่มเธรด
+thread1.start()
+thread2.start()
+
+# รอให้เธรดทั้งสองทำงานเสร็จ
+thread1.join()
+thread2.join()
+
+print("เสร็จสิ้นการทำงาน!")
+
+ในตัวอย่างนี้ เธรดสองตัว (print_numbers และ print_letters) จะทำงานพร้อมกัน ทำให้สามารถพิมพ์ตัวเลขและตัวอักษรในเวลาเดียวกัน
+
